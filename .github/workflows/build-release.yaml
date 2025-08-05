@@ -137,18 +137,20 @@ jobs:
       - name: Expose MacPorts tools
         run: |
           echo "PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> $GITHUB_ENV
-      - name: Build macOS arm64 release build
+      - name: Build macOS x86_64 release build
         env:
           CONFIG: release
         run: |
           make clean
+          export CFLAGS="-arch x86_64"
+          export CXXFLAGS="-arch x86_64"
           make -j6
           make macapp
           cp -r licenses publish/macOS/release/
-      - name: Archive macOS arm64 release build
+      - name: Archive macOS x86_64 release build
         uses: actions/upload-artifact@v4
         with:
-          name: release-macos-arm64
+          name: release-macos-x86_64
           path: publish/macOS/release
           retention-days: 1
       - name: Temporarily let gtar run as root
