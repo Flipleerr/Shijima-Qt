@@ -2,7 +2,7 @@ include ../../common.mk
 
 SOURCES = Platform.mm ActiveWindowObserver.cc PrivateActiveWindowObserver.mm
 QT_LIBS = Core Widgets
-CXXFLAGS += -x objective-c++ -fobjc-arc
+CXXFLAGS += -x objective-c++ -fobjc-arc -arch x86_64
 
 all:: macOS.a
 
