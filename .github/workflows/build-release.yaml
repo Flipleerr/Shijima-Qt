@@ -144,6 +144,7 @@ jobs:
           make clean
           export CFLAGS="-arch x86_64"
           export CXXFLAGS="-arch x86_64"
+          export LDFLAGS="-arch x86_64"
           make -j6
           make macapp
           cp -r licenses publish/macOS/release/
